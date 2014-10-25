@@ -14,6 +14,20 @@ public class Componente implements Operacion {
 	}
 
 	/**
+	 * metodo que conecta dos componentes entre si
+	 * 
+	 *
+	 * @param comp2
+	 *            segundo componete por conectar
+	 * @param num
+	 *            numero de entrada del componente 2 a la cual se desea conectar
+	 *            este componente
+	 */
+	public void ConectComp(Componente comp2, int num) {
+		comp2.ConectEntrada(num, this.getSalida());
+	}
+
+	/**
 	 * metodo que le asigna un valor a la entrada que se solicita cunado esta se
 	 * conecta a otro componente
 	 * 
