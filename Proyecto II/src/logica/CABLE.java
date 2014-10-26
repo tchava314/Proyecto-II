@@ -1,6 +1,6 @@
 package logica;
 
-public class AND extends Componente {
+public class CABLE extends Componente {
 	/**
 	 * constructor que le manda un dato a la super clase
 	 * 
@@ -8,10 +8,10 @@ public class AND extends Componente {
 	 *            numero entero que indica la cantidad de entradas del
 	 *            componente
 	 */
-	public AND(int ent) {
+	public CABLE(int ent) {
 
 		super(ent);
-		if (ent < 2) {
+		if (ent != 1) {
 			this.minEntradas = false;
 			System.out.println("error");
 
@@ -22,14 +22,14 @@ public class AND extends Componente {
 	@Override
 	public void operacion() {
 		if (isConected) {
-			for (int i = 0; i < this.entradas.size; i++) {
-				if (entradas.getObject(i).getData() == 1) {
-					this.setSalida(1);
-				} else {
-					this.setSalida(0);
-					break;
-				}
+			if (entradas.getObject(0).getData() == 1) {
+				this.setSalida(1);
+
+			} else {
+				this.setSalida(0);
+
 			}
 		}
 	}
+
 }

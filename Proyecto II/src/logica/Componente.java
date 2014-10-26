@@ -2,14 +2,22 @@ package logica;
 
 public class Componente implements Operacion {
 	protected int salida;
-	protected int entrada1;
-	protected int entrada2;
+	protected Lista<Integer> entradas = new Lista();
 	protected boolean isConected;
+	protected boolean minEntradas = true;
 
-	public Componente() {
+	/**
+	 * constructor del componente
+	 * 
+	 * @param ent
+	 *            recibe un entero que indica el numero de entradas del
+	 *            componete
+	 */
+	public Componente(int ent) {
 		salida = 0;
-		entrada1 = 0;
-		entrada2 = 0;
+		for (int i = 0; i < ent; i++) {
+			entradas.addDataEnd(0);
+		}
 		isConected = false;
 	}
 
@@ -39,15 +47,9 @@ public class Componente implements Operacion {
 	 *            0
 	 */
 	public void ConectEntrada(int num, int data) {
-		if (num == 1) {
-			this.setEntrada1(data);
-			isConected = true;
 
-		} else {
-			this.setEntrada2(data);
-			isConected = true;
-
-		}
+		entradas.getObject(num - 1).setData(data);
+		isConected = true;
 		this.operacion();
 	}
 
@@ -65,22 +67,6 @@ public class Componente implements Operacion {
 
 	public void setSalida(int salida) {
 		this.salida = salida;
-	}
-
-	public int getEntrada1() {
-		return entrada1;
-	}
-
-	public void setEntrada1(int entrada1) {
-		this.entrada1 = entrada1;
-	}
-
-	public int getEntrada2() {
-		return entrada2;
-	}
-
-	public void setEntrada2(int entrada2) {
-		this.entrada2 = entrada2;
 	}
 
 	@Override

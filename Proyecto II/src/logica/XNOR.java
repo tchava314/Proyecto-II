@@ -1,6 +1,6 @@
 package logica;
 
-public class AND extends Componente {
+public class XNOR extends Componente {
 	/**
 	 * constructor que le manda un dato a la super clase
 	 * 
@@ -8,7 +8,7 @@ public class AND extends Componente {
 	 *            numero entero que indica la cantidad de entradas del
 	 *            componente
 	 */
-	public AND(int ent) {
+	public XNOR(int ent) {
 
 		super(ent);
 		if (ent < 2) {
@@ -22,13 +22,16 @@ public class AND extends Componente {
 	@Override
 	public void operacion() {
 		if (isConected) {
+			int unos = 0;
 			for (int i = 0; i < this.entradas.size; i++) {
 				if (entradas.getObject(i).getData() == 1) {
-					this.setSalida(1);
-				} else {
-					this.setSalida(0);
-					break;
+					unos++;
 				}
+			}
+			if (unos % 2 == 0) {
+				this.setSalida(1);
+			} else {
+				this.setSalida(0);
 			}
 		}
 	}

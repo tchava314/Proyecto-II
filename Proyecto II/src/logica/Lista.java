@@ -20,7 +20,9 @@ public class Lista<Ele> {
 			temp = temp.getNext();
 			count++;
 		}
+
 		return temp;
+
 	}
 
 	public void addDataBegin(Ele newObject) {
