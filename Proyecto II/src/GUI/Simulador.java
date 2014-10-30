@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.net.URL;
+
 import javax.swing.*;
 
 
@@ -16,7 +18,6 @@ public class Simulador extends JFrame implements ActionListener{
 		JMenuBar Barra= new JMenuBar();
 		setResizable(false);
 		setTitle("LogiCTec");
-		setLocationRelativeTo(null);
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel text= new JLabel("Compuertas Logicas");
@@ -24,7 +25,7 @@ public class Simulador extends JFrame implements ActionListener{
 		//se crea el boton and
 		JButton and=new JButton();
 		and.setBounds(0,0,140,60);
-		imagen= new ImageIcon("and.jpg");
+		imagen= new ImageIcon("and.png");
 		icono=new ImageIcon(imagen.getImage().getScaledInstance(and.getWidth(),and.getHeight(),Image.SCALE_DEFAULT));
 		and.setIcon(icono);
 		
@@ -112,7 +113,10 @@ public class Simulador extends JFrame implements ActionListener{
         opcMenu.addSeparator();
         opcMenu.add(help);
         opcMenu.add(about);
-		
+	    fondoMenu fondo= new fondoMenu();
+	    
+	    
+	    
         add(text);
 	    add(and);
 	    add(nand);
@@ -122,11 +126,27 @@ public class Simulador extends JFrame implements ActionListener{
 	    add(xor);
 	    add(xnor);
 	    setJMenuBar(Barra);
+	    add(fondo);
+	    
+	    
 	    
 		setVisible(true);
 
 	}
+	public class fondoMenu extends JPanel{ //se crea un panel para la imagen
+		public Image imagenFondo;
+		public URL fondo;
+		
+		public fondoMenu(){
+			setSize(800,530);
+		}
+		public void paintComponent(Graphics g){
+		    ImageIcon imagenFondo= new ImageIcon(getClass().getResource("cuadricula.jpg")); 
+			g.drawImage(imagenFondo.getImage(), 160, 0, getWidth(), getHeight(), this); //ubica la imagen
+		}
+	}
 	
+
 	public static void main(String[] args) {
 		Simulador game= new Simulador();
 		game.pack();
@@ -140,6 +160,11 @@ public class Simulador extends JFrame implements ActionListener{
 		}
 		if(e.getSource()==salir){
 			System.exit(0);
+		}
+		if (e.getSource()==about){
+			Acerca acerca= new Acerca();
+			
+			
 		}
 		
 	}
