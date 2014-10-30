@@ -5,6 +5,9 @@ public class Componente implements Operacion {
 	protected Lista<Integer> entradas = new Lista();
 	protected boolean isConected;
 	protected boolean minEntradas = true;
+	protected Componente padre;
+	protected int numSalida;
+	protected Lista<Componente> hijos = new Lista<Componente>();
 
 	/**
 	 * constructor del componente
@@ -19,6 +22,47 @@ public class Componente implements Operacion {
 			entradas.addDataEnd(0);
 		}
 		isConected = false;
+		numSalida = 0;
+	}
+
+	public Lista<Integer> getEntradas() {
+		return entradas;
+	}
+
+	public void setEntradas(Lista<Integer> entradas) {
+		this.entradas = entradas;
+	}
+
+	public boolean isMinEntradas() {
+		return minEntradas;
+	}
+
+	public void setMinEntradas(boolean minEntradas) {
+		this.minEntradas = minEntradas;
+	}
+
+	public Componente getPadre() {
+		return padre;
+	}
+
+	public void setPadre(Componente padre) {
+		this.padre = padre;
+	}
+
+	public int getNumSalida() {
+		return numSalida;
+	}
+
+	public void setNumSalida(int numSalida) {
+		this.numSalida = numSalida;
+	}
+
+	public Lista<Componente> getHijos() {
+		return hijos;
+	}
+
+	public void setHijos(Lista<Componente> hijos) {
+		this.hijos = hijos;
 	}
 
 	/**
@@ -33,6 +77,8 @@ public class Componente implements Operacion {
 	 */
 	public void ConectComp(Componente comp2, int num) {
 		comp2.ConectEntrada(num, this.getSalida());
+		padre = comp2;
+		numSalida = num;
 	}
 
 	/**
@@ -51,6 +97,10 @@ public class Componente implements Operacion {
 		entradas.getObject(num - 1).setData(data);
 		isConected = true;
 		this.operacion();
+		if (padre != null) {
+			padre.ConectEntrada(this.numSalida, this.getSalida());
+
+		}
 	}
 
 	public boolean isConected() {

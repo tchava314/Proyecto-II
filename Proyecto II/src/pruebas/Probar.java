@@ -13,9 +13,8 @@ public class Probar {
 		CompAND1.ConectEntrada(2, 1);
 		CompAND1.ConectEntrada(1, 1);
 		CompAND1.ConectComp(CompXOR, 2);
-
+		CompAND1.ConectEntrada(1, 0);
 		System.out.println(CompXOR.getSalida());
 
 	}
-
 }
