@@ -14,7 +14,9 @@ public class AND extends Componente {
 		if (ent < 2) {
 			this.minEntradas = false;
 			System.out.println("error");
-
+			for (int i = 0; i < ent; i++) {
+				new CABLE(1).ConectComp(this, i);
+			}
 		}
 		// TODO Auto-generated constructor stub
 	}

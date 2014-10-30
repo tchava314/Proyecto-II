@@ -61,8 +61,8 @@ public class Componente implements Operacion {
 		return hijos;
 	}
 
-	public void setHijos(Lista<Componente> hijos) {
-		this.hijos = hijos;
+	public void setHijo(Componente hijo) {
+		hijos.addDataEnd(hijo);
 	}
 
 	/**
@@ -83,7 +83,8 @@ public class Componente implements Operacion {
 
 	/**
 	 * metodo que le asigna un valor a la entrada que se solicita cunado esta se
-	 * conecta a otro componente
+	 * conecta a otro componente, ademas le "avisa" al componente "padre" que
+	 * ocurrio un cambio en la entrada
 	 * 
 	 * @param num
 	 *            recibe el numero de entrada a la cual se le quiere asiganar un
